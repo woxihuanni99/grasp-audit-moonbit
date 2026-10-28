@@ -23,6 +23,10 @@ quoted CSV fields are deliberately unsupported. Max input: 16 MiB / 200,000 rows
 
 Options: `--horizon-ms` (1000), `--dwell-ms` (200), `--max-gap-ms` (250),
 `--format markdown|json|csv`. Input `-` reads stdin. Errors exit 2 with no report.
+Optional `--min-stable-rate N` and `--max-censored-rate N` enable per-policy
+acceptance gates (integer percentages 0–100). A failed gate exits 1 while preserving
+the full report and naming failures on stderr. No gates are enabled by default.
+See [quality gates](QUALITY_GATES.md).
 
 [Exact metric definitions](METRICS.md) · [Validation](VALIDATION.md).
 

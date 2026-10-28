@@ -28,6 +28,7 @@ node dist/grasp-audit.cjs examples/synthetic.csv --format csv > results.csv
 - 对采样断档和录制过早结束单独计数，不偷偷当成失败或成功。
 - 每试次诊断：累计保持/失持时长、首次失持时刻、最终稳定段时长。
 - 按策略汇总保持率、稳定率、丢失后的条件恢复率、恢复时间中位数。
+- 可选质量门禁：逐策略检查最低稳定率和最高删失率，用退出码接入自动评估。
 - 输出 Markdown 报告、JSON 汇总和逐试次 CSV；支持标准输入。
 - 分析、解析、汇总和报告主体为 MoonBit；少量 JS FFI 只负责本地文件与终端 I/O。
 
@@ -63,6 +64,18 @@ cat my-traces.csv | node dist/grasp-audit.cjs - --format csv
 
 默认：扰动后观察 1000 ms，最终连续保持至少 200 ms，相邻采样间隔不超过 250 ms。参数是可修改的演示默认值，不是机器人领域标准。
 
+## 自动评估质量门禁
+
+```bash
+node dist/grasp-audit.cjs my-traces.csv --min-stable-rate 80 --max-censored-rate 10 --format json > report.json
+```
+
+两个参数可单独使用，取 0–100 的整数百分比，默认均关闭。对**每个策略分别**检查，
+边界相等视为通过。退出码：`0` 通过或未启用门禁；`1` 至少一个门禁未通过；`2` 输入或参数错误。
+门禁失败时仍完整输出报告，同时在 stderr 列出所有未通过的策略/阈值，便于 CI 保存证据。
+稳定率无分母时不能算“达到 0%”，启用最低稳定率门禁会判为未通过。
+这是工程验收阈值，不是统计显著性检验。见 [完整说明](docs/QUALITY_GATES.md)。
+
 ## 从 MoonBit 源码编译
 
 先按 [MoonBit 官方说明](https://www.moonbitlang.com/download/) 安装工具链，再运行：
@@ -81,7 +94,7 @@ bash scripts/build-dist.sh
 bash scripts/verify.sh
 ```
 
-已实际通过：**24 个 MoonBit 单元测试，在 JS 和 Wasm GC 两个后端各跑一次；10 个 CLI 集成测试，其中包含 500 条固定随机种子轨迹与独立 Python 参考实现逐项对照。** 见 [验证记录](docs/VALIDATION.md)。JS 是 CLI 支持的后端；Wasm GC 测试针对可移植分析库。
+已实际通过：**32 个 MoonBit 单元测试，在 JS 和 Wasm GC 两个后端各跑一次；16 个 CLI 集成测试，其中包含 500 条固定随机种子轨迹与独立 Python 参考实现逐项对照。** 见 [验证记录](docs/VALIDATION.md)。JS 是 CLI 支持的后端；Wasm GC 测试针对可移植分析库。
 
 ## 示例输出
 

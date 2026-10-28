@@ -10,6 +10,8 @@ pub fn analyze_csv(String, Options) -> Result[Report, String]
 
 pub fn analyze_trial(Trial, Options) -> Result[TrialResult, String]
 
+pub fn check_gates(Report, Gates) -> Result[Array[String], String]
+
 pub fn default_options() -> Options
 
 pub fn outcome_name(Outcome) -> String
@@ -29,6 +31,11 @@ pub fn summarize(Array[TrialResult]) -> Array[PolicySummary]
 // Errors
 
 // Types and methods
+pub(all) struct Gates {
+  min_stable_percent : Int32?
+  max_censored_percent : Int32?
+}
+
 pub(all) struct Options {
   horizon_ms : Int32
   dwell_ms : Int32

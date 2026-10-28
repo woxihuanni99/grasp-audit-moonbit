@@ -32,6 +32,14 @@ function _M0DTPC16result6ResultGRPB5ArrayGRP213grasp_2daudit13grasp_2daudit5Tria
   this._0 = param0;
 }
 _M0DTPC16result6ResultGRPB5ArrayGRP213grasp_2daudit13grasp_2daudit5TrialEsE2Ok.prototype.$tag = 1;
+function _M0DTPC16result6ResultGRPB5ArrayGsEsE3Err(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRPB5ArrayGsEsE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGRPB5ArrayGsEsE2Ok(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRPB5ArrayGsEsE2Ok.prototype.$tag = 1;
 function _M0DTPC16result6ResultGssE3Err(param0) {
   this._0 = param0;
 }
@@ -285,6 +293,11 @@ const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit11read__input = (pa
 };
 const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit6stdout = (text) => { process.stdout.write(text); };
 const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit11error__exit = (message) => { process.stderr.write('grasp-audit: ' + message + '\n'); process.exitCode = 2; };
+const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit13gate__failure = (message) => { process.stderr.write('grasp-audit: quality gate: ' + message + '\n'); process.exitCode = 1; };
+function _M0TP213grasp_2daudit13grasp_2daudit5Gates(param0, param1) {
+  this.min_stable_percent = param0;
+  this.max_censored_percent = param1;
+}
 const _M0FP092moonbitlang_2fcore_2fbuiltin_2fStringBuilder_24as_24_40moonbitlang_2fcore_2fbuiltin_2eLogger = { method_0: _M0IPB13StringBuilderPB6Logger13write__string, method_1: _M0IP016_24default__implPB6Logger16write__substringGRPB13StringBuilderE, method_2: _M0IPB13StringBuilderPB6Logger11write__view, method_3: _M0IPB13StringBuilderPB6Logger11write__char, method_4: _M0IP016_24default__implPB6Logger28write__string__interpolationGRPB13StringBuilderE, method_5: _M0IP016_24default__implPB6Logger5writeGRPB13StringBuilderE };
 const _M0MPB4Iter4nextN6constrS68GUiRP213grasp_2daudit13grasp_2daudit13PolicySummaryEE = 0;
 const _M0MPB4Iter4nextN6constrS69GUiRP213grasp_2daudit13grasp_2daudit13PolicySummaryEE = 0;
@@ -296,24 +309,25 @@ const _M0MPB5Iter23newN6constrS169GiRP213grasp_2daudit13grasp_2daudit13PolicySum
 const _M0FPC28internal7strconv14base__err__str = "invalid base";
 const _M0FPC28internal7strconv15range__err__str = "value out of range";
 const _M0FPC28internal7strconv16syntax__err__str = "invalid syntax";
-const _M0FP213grasp_2daudit13grasp_2daudit16default__optionsN6recordS894 = new _M0TP213grasp_2daudit13grasp_2daudit7Options(1000, 200, 250);
-const _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1037 = new _M0DTPC16result6ResultGusE3Err("horizon-ms must be between 1 and 1000000000");
-const _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1038 = new _M0DTPC16result6ResultGusE3Err("dwell-ms must be positive and no greater than horizon-ms");
-const _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1039 = new _M0DTPC16result6ResultGusE3Err("max-gap-ms must be between 1 and 1000000000");
+const _M0FP213grasp_2daudit13grasp_2daudit16default__optionsN6recordS900 = new _M0TP213grasp_2daudit13grasp_2daudit7Options(1000, 200, 250);
+const _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1071 = new _M0DTPC16result6ResultGusE3Err("horizon-ms must be between 1 and 1000000000");
+const _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1072 = new _M0DTPC16result6ResultGusE3Err("dwell-ms must be positive and no greater than horizon-ms");
+const _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1073 = new _M0DTPC16result6ResultGusE3Err("max-gap-ms must be between 1 and 1000000000");
 const _M0FPB4seed = _M0FPB12random__seed();
 const _M0MPC16string6String4trimN6recordS442 = new _M0TPC16string10StringView("\t\n\r ", 0, 4);
-const _M0FPC28internal7strconv20parse__int64_2einnerN6recordS849 = new _M0TPC16string10StringView("", 0, 0);
-const _M0FP213grasp_2daudit13grasp_2daudit18parse__nonnegativeN6constrS981 = new _M0DTPC16result6ResultGisE3Err("expected a decimal integer between 0 and 1000000000");
+const _M0FPC28internal7strconv20parse__int64_2einnerN6recordS855 = new _M0TPC16string10StringView("", 0, 0);
+const _M0FP213grasp_2daudit13grasp_2daudit18parse__nonnegativeN6constrS1015 = new _M0DTPC16result6ResultGisE3Err("expected a decimal integer between 0 and 1000000000");
 const _M0MPC16string10StringView4findN6constrS307 = 0;
-const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS997 = new _M0TPC16string10StringView("\n", 0, 1);
-const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS998 = new _M0DTPC16result6ResultGRPB5ArrayGRP213grasp_2daudit13grasp_2daudit5TrialEsE3Err("input exceeds 200000 sample rows");
-const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS999 = new _M0TPC16string10StringView(",", 0, 1);
-const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS1000 = new _M0DTPC16result6ResultGRPB5ArrayGRP213grasp_2daudit13grasp_2daudit5TrialEsE3Err("input contains no sample rows");
-const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1131 = new _M0DTPC16result6ResultGssE2Ok("grasp-audit 0.1.0\n");
-const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1132 = new _M0DTPC16result6ResultGssE3Err("format must be markdown, json, or csv");
-const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6recordS1133 = new _M0TPC16string10StringView("--", 0, 2);
-const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1134 = new _M0DTPC16result6ResultGssE3Err("expected one input file");
-const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1135 = new _M0DTPC16result6ResultGssE3Err("missing input file; use --help");
+const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS1031 = new _M0TPC16string10StringView("\n", 0, 1);
+const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS1032 = new _M0DTPC16result6ResultGRPB5ArrayGRP213grasp_2daudit13grasp_2daudit5TrialEsE3Err("input exceeds 200000 sample rows");
+const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS1033 = new _M0TPC16string10StringView(",", 0, 1);
+const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS1034 = new _M0DTPC16result6ResultGRPB5ArrayGRP213grasp_2daudit13grasp_2daudit5TrialEsE3Err("input contains no sample rows");
+const _M0FP213grasp_2daudit13grasp_2daudit12check__gatesN6constrS978 = new _M0DTPC16result6ResultGRPB5ArrayGsEsE3Err("quality gate percentages must be integers from 0 to 100");
+const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1165 = new _M0DTPC16result6ResultGssE2Ok("grasp-audit 0.2.0\n");
+const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1166 = new _M0DTPC16result6ResultGssE3Err("format must be markdown, json, or csv");
+const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6recordS1167 = new _M0TPC16string10StringView("--", 0, 2);
+const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1168 = new _M0DTPC16result6ResultGssE3Err("expected one input file");
+const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1169 = new _M0DTPC16result6ResultGssE3Err("missing input file; use --help");
 function _M0FPB13consume4__acc(acc, input) {
   const _p = (acc >>> 0) + ((Math.imul(input, -1028477379) | 0) >>> 0) | 0;
   const _p$2 = 17;
@@ -1252,6 +1266,21 @@ function _M0MPC15array9ArrayView5iter2GRP213grasp_2daudit13grasp_2daudit13Policy
     }
   }, len);
 }
+function _M0IPC16option6OptionPB2Eq5equalGiE(self, other) {
+  if (self === undefined) {
+    return other === undefined;
+  } else {
+    const _Some = self;
+    const _x = _Some;
+    if (other === undefined) {
+      return false;
+    } else {
+      const _Some$2 = other;
+      const _y = _Some$2;
+      return _x === _y;
+    }
+  }
+}
 function _M0MPC13int3Int20next__power__of__two(self) {
   if (self >= 0) {
     if (self <= 1) {
@@ -1839,7 +1868,7 @@ function _M0FPB19fixed__bubble__sortGiE(arr) {
     }
   }
 }
-function _M0FPB20fixed__choose__pivotN7sort__2S731GiE(_env, a, b) {
+function _M0FPB20fixed__choose__pivotN7sort__2S737GiE(_env, a, b) {
   const arr = _env._1;
   const swaps = _env._0;
   if (arr.buf[arr.start + a | 0] > arr.buf[arr.start + b | 0]) {
@@ -1850,10 +1879,10 @@ function _M0FPB20fixed__choose__pivotN7sort__2S731GiE(_env, a, b) {
     return;
   }
 }
-function _M0FPB20fixed__choose__pivotN7sort__3S732GiE(_env, a, b, c) {
-  _M0FPB20fixed__choose__pivotN7sort__2S731GiE(_env, a, b);
-  _M0FPB20fixed__choose__pivotN7sort__2S731GiE(_env, b, c);
-  _M0FPB20fixed__choose__pivotN7sort__2S731GiE(_env, a, b);
+function _M0FPB20fixed__choose__pivotN7sort__3S738GiE(_env, a, b, c) {
+  _M0FPB20fixed__choose__pivotN7sort__2S737GiE(_env, a, b);
+  _M0FPB20fixed__choose__pivotN7sort__2S737GiE(_env, b, c);
+  _M0FPB20fixed__choose__pivotN7sort__2S737GiE(_env, a, b);
 }
 function _M0FPB20fixed__choose__pivotGiE(arr) {
   const len = arr.end - arr.start | 0;
@@ -1864,11 +1893,11 @@ function _M0FPB20fixed__choose__pivotGiE(arr) {
     const c = Math.imul(len / 4 | 0, 3) | 0;
     const _env = { _0: swaps, _1: arr };
     if (len > 50) {
-      _M0FPB20fixed__choose__pivotN7sort__3S732GiE(_env, a - 1 | 0, a, a + 1 | 0);
-      _M0FPB20fixed__choose__pivotN7sort__3S732GiE(_env, b - 1 | 0, b, b + 1 | 0);
-      _M0FPB20fixed__choose__pivotN7sort__3S732GiE(_env, c - 1 | 0, c, c + 1 | 0);
+      _M0FPB20fixed__choose__pivotN7sort__3S738GiE(_env, a - 1 | 0, a, a + 1 | 0);
+      _M0FPB20fixed__choose__pivotN7sort__3S738GiE(_env, b - 1 | 0, b, b + 1 | 0);
+      _M0FPB20fixed__choose__pivotN7sort__3S738GiE(_env, c - 1 | 0, c, c + 1 | 0);
     }
-    _M0FPB20fixed__choose__pivotN7sort__3S732GiE(_env, a, b, c);
+    _M0FPB20fixed__choose__pivotN7sort__3S738GiE(_env, a, b, c);
   }
   if (swaps.val === 12) {
     _M0MPC15array12MutArrayView14rev__in__placeGiE(arr);
@@ -2293,7 +2322,7 @@ function _M0FPC28internal7strconv19overflow__threshold(base, neg) {
   }
 }
 function _M0FPC28internal7strconv20parse__int64_2einner(str, base) {
-  if (_M0IP016_24default__implPB2Eq10not__equalGRPC16string10StringViewE(str, _M0FPC28internal7strconv20parse__int64_2einnerN6recordS849)) {
+  if (_M0IP016_24default__implPB2Eq10not__equalGRPC16string10StringViewE(str, _M0FPC28internal7strconv20parse__int64_2einnerN6recordS855)) {
     let neg;
     let rest;
     _L: {
@@ -2881,6 +2910,103 @@ function _M0FP213grasp_2daudit13grasp_2daudit16render__markdown(report) {
   }
   return `${output}\n**Interpretation:** observed binary-state retention and sustained final-window recovery under sample-and-hold, not continuous physical guarantees, force closure, causal effects, or robot task success. Recovery latency starts at the perturbation, not at the loss. Compare matched protocols, thresholds, objects, and sampling rates.\n`;
 }
+function _M0FP213grasp_2daudit13grasp_2daudit12check__gates(report, gates) {
+  const _bind = [gates.min_stable_percent, gates.max_censored_percent];
+  const _bind$2 = _bind.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind$2) {
+      const threshold = _bind[_];
+      if (threshold === undefined) {
+      } else {
+        const _Some = threshold;
+        const _value = _Some;
+        if (_value < 0 || _value > 100) {
+          return _M0FP213grasp_2daudit13grasp_2daudit12check__gatesN6constrS978;
+        }
+      }
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  const failures = [];
+  if (_M0IPC16option6OptionPB2Eq5equalGiE(gates.min_stable_percent, undefined) && _M0IPC16option6OptionPB2Eq5equalGiE(gates.max_censored_percent, undefined)) {
+    return new _M0DTPC16result6ResultGRPB5ArrayGsEsE2Ok(failures);
+  }
+  if (report.policies.length === 0) {
+    _M0MPC15array5Array4pushGRP213grasp_2daudit13grasp_2daudit11TrialResultE(failures, "no policies to evaluate");
+    return new _M0DTPC16result6ResultGRPB5ArrayGsEsE2Ok(failures);
+  }
+  const _bind$3 = report.policies;
+  const _bind$4 = _bind$3.length;
+  let _tmp$2 = 0;
+  while (true) {
+    const _ = _tmp$2;
+    if (_ < _bind$4) {
+      const summary = _bind$3[_];
+      const complete = summary.total - summary.censored | 0;
+      const stable = summary.retained + summary.recovered | 0;
+      const _bind$5 = gates.min_stable_percent;
+      if (_bind$5 === undefined) {
+      } else {
+        const _Some = _bind$5;
+        const _minimum = _Some;
+        if (complete <= 0) {
+          const _string_builder = _M0MPB13StringBuilder21StringBuilder_2einner(56);
+          _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "policy '");
+          _M0MPB13StringBuilder13write__objectGsE(_string_builder, summary.policy);
+          _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "': stable rate is undefined (no complete trials)");
+          _M0MPC15array5Array4pushGRP213grasp_2daudit13grasp_2daudit11TrialResultE(failures, _string_builder.val);
+        } else {
+          if ((stable + 0) * 100 < (_minimum + 0) * (complete + 0)) {
+            const _string_builder = _M0MPB13StringBuilder21StringBuilder_2einner(42);
+            _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "policy '");
+            _M0MPB13StringBuilder13write__objectGsE(_string_builder, summary.policy);
+            _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "': stable rate ");
+            _M0MPB13StringBuilder13write__objectGsE(_string_builder, _M0FP213grasp_2daudit13grasp_2daudit7percent(stable, complete));
+            _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, " is below minimum ");
+            _M0MPB13StringBuilder13write__objectGiE(_string_builder, _minimum);
+            _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "%");
+            _M0MPC15array5Array4pushGRP213grasp_2daudit13grasp_2daudit11TrialResultE(failures, _string_builder.val);
+          }
+        }
+      }
+      const _bind$6 = gates.max_censored_percent;
+      if (_bind$6 === undefined) {
+      } else {
+        const _Some = _bind$6;
+        const _maximum = _Some;
+        if (summary.total <= 0) {
+          const _string_builder = _M0MPB13StringBuilder21StringBuilder_2einner(50);
+          _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "policy '");
+          _M0MPB13StringBuilder13write__objectGsE(_string_builder, summary.policy);
+          _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "': censoring rate is undefined (no trials)");
+          _M0MPC15array5Array4pushGRP213grasp_2daudit13grasp_2daudit11TrialResultE(failures, _string_builder.val);
+        } else {
+          if ((summary.censored + 0) * 100 > (_maximum + 0) * (summary.total + 0)) {
+            const _string_builder = _M0MPB13StringBuilder21StringBuilder_2einner(44);
+            _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "policy '");
+            _M0MPB13StringBuilder13write__objectGsE(_string_builder, summary.policy);
+            _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "': censoring rate ");
+            _M0MPB13StringBuilder13write__objectGsE(_string_builder, _M0FP213grasp_2daudit13grasp_2daudit7percent(summary.censored, summary.total));
+            _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, " exceeds maximum ");
+            _M0MPB13StringBuilder13write__objectGiE(_string_builder, _maximum);
+            _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "%");
+            _M0MPC15array5Array4pushGRP213grasp_2daudit13grasp_2daudit11TrialResultE(failures, _string_builder.val);
+          }
+        }
+      }
+      _tmp$2 = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return new _M0DTPC16result6ResultGRPB5ArrayGsEsE2Ok(failures);
+}
 function _M0FP213grasp_2daudit13grasp_2daudit9valid__id(value) {
   if (value.length === 0 || value.length > 80) {
     return false;
@@ -2946,7 +3072,7 @@ function _M0FP213grasp_2daudit13grasp_2daudit9valid__id(value) {
 }
 function _M0FP213grasp_2daudit13grasp_2daudit18parse__nonnegative(value) {
   if (value.length === 0 || value.length > 10) {
-    return _M0FP213grasp_2daudit13grasp_2daudit18parse__nonnegativeN6constrS981;
+    return _M0FP213grasp_2daudit13grasp_2daudit18parse__nonnegativeN6constrS1015;
   }
   const _bind = value.length;
   let _tmp = 0;
@@ -3024,7 +3150,7 @@ function _M0FP213grasp_2daudit13grasp_2daudit18parse__nonnegative(value) {
   return new _M0DTPC16result6ResultGisE2Ok(parsed);
 }
 function _M0FP213grasp_2daudit13grasp_2daudit10parse__csv(text) {
-  const lines = _M0MPB4Iter9to__arrayGRPC16string10StringViewE(_M0MPC16string6String5split(text, _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS997));
+  const lines = _M0MPB4Iter9to__arrayGRPC16string10StringViewE(_M0MPC16string6String5split(text, _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS1031));
   const trials = [];
   const _bind = [];
   const index = _M0MPB3Map3MapGsiE(new _M0TPB9ArrayViewGUsiEE(_bind, 0, 0), undefined);
@@ -3058,9 +3184,9 @@ function _M0FP213grasp_2daudit13grasp_2daudit10parse__csv(text) {
       }
       rows = rows + 1 | 0;
       if (rows > 200000) {
-        return _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS998;
+        return _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS1032;
       }
-      const fields = _M0MPB4Iter9to__arrayGRPC16string10StringViewE(_M0MPB4Iter3mapGRPC16string10StringViewsE(_M0MPC16string6String5split(line, _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS999), (x) => _M0MPC16string10StringView9to__owned(x)));
+      const fields = _M0MPB4Iter9to__arrayGRPC16string10StringViewE(_M0MPB4Iter3mapGRPC16string10StringViewsE(_M0MPC16string6String5split(line, _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS1033), (x) => _M0MPC16string10StringView9to__owned(x)));
       if (fields.length !== 5) {
         const _string_builder = _M0MPB13StringBuilder21StringBuilder_2einner(41);
         _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "line ");
@@ -3159,19 +3285,19 @@ function _M0FP213grasp_2daudit13grasp_2daudit10parse__csv(text) {
     }
   }
   if (trials.length === 0) {
-    return _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS1000;
+    return _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS1034;
   }
   return new _M0DTPC16result6ResultGRPB5ArrayGRP213grasp_2daudit13grasp_2daudit5TrialEsE2Ok(trials);
 }
 function _M0FP213grasp_2daudit13grasp_2daudit17validate__options(options) {
   if (options.horizon_ms <= 0 || options.horizon_ms > 1000000000) {
-    return _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1037;
+    return _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1071;
   }
   if (options.dwell_ms <= 0 || options.dwell_ms > options.horizon_ms) {
-    return _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1038;
+    return _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1072;
   }
   if (options.max_gap_ms <= 0 || options.max_gap_ms > 1000000000) {
-    return _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1039;
+    return _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1073;
   }
   return new _M0DTPC16result6ResultGusE2Ok(undefined);
 }
@@ -3449,23 +3575,24 @@ function _M0FP213grasp_2daudit13grasp_2daudit12analyze__csv(text, options) {
 function _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3run() {
   const argv = _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit4args();
   if (argv.length === 0) {
-    return new _M0DTPC16result6ResultGssE2Ok("GraspAudit 0.1.0 - offline dexterous-grasp trace evaluation\n\nUsage: moon run --target js cmd/grasp-audit -- INPUT.csv [OPTIONS]\n       INPUT.csv may be - for stdin.\n\n  --format markdown|json|csv   Output format (default: markdown)\n  --horizon-ms N               Evaluation horizon (default: 1000)\n  --dwell-ms N                 Sustained final hold (default: 200)\n  --max-gap-ms N               Maximum sampling gap (default: 250)\n  --help                       Show this help\n  --version                    Show version\n\nCSV header: trial,policy,time_ms,held,perturbation\nIdentifiers: ASCII letters/digits/underscore/hyphen/dot, no quoting.\nFlags: 0 or 1. One perturbation per trial; held baseline required.\nNothing is uploaded. No robot control, network calls, or model training.\n");
+    return new _M0DTPC16result6ResultGssE2Ok("GraspAudit 0.2.0 - offline dexterous-grasp trace evaluation\n\nUsage: moon run --target js cmd/grasp-audit -- INPUT.csv [OPTIONS]\n       INPUT.csv may be - for stdin.\n\n  --format markdown|json|csv   Output format (default: markdown)\n  --horizon-ms N               Evaluation horizon (default: 1000)\n  --dwell-ms N                 Sustained final hold (default: 200)\n  --max-gap-ms N               Maximum sampling gap (default: 250)\n  --min-stable-rate N          Require each policy's stable rate >= N percent\n  --max-censored-rate N        Require each policy's censoring rate <= N percent\n                               Gate percentages: integers 0..100; omitted=off\n  --help                       Show this help\n  --version                    Show version\n\nCSV header: trial,policy,time_ms,held,perturbation\nIdentifiers: ASCII letters/digits/underscore/hyphen/dot, no quoting.\nFlags: 0 or 1. One perturbation per trial; held baseline required.\nExit codes: 0 success, 1 quality gate failed (report still printed), 2 input/usage error.\nNothing is uploaded. No robot control, network calls, or model training.\n");
   }
   let input = undefined;
   let format = "markdown";
-  let options = _M0FP213grasp_2daudit13grasp_2daudit16default__optionsN6recordS894;
+  let options = _M0FP213grasp_2daudit13grasp_2daudit16default__optionsN6recordS900;
+  let gates = new _M0TP213grasp_2daudit13grasp_2daudit5Gates(undefined, undefined);
   let i = 0;
   while (true) {
     if (i < argv.length) {
       const _tmp = i;
       const arg = _tmp >>> 0 < argv.length ? argv[_tmp] : $oob();
       if (arg === "--help" || arg === "-h") {
-        return new _M0DTPC16result6ResultGssE2Ok("GraspAudit 0.1.0 - offline dexterous-grasp trace evaluation\n\nUsage: moon run --target js cmd/grasp-audit -- INPUT.csv [OPTIONS]\n       INPUT.csv may be - for stdin.\n\n  --format markdown|json|csv   Output format (default: markdown)\n  --horizon-ms N               Evaluation horizon (default: 1000)\n  --dwell-ms N                 Sustained final hold (default: 200)\n  --max-gap-ms N               Maximum sampling gap (default: 250)\n  --help                       Show this help\n  --version                    Show version\n\nCSV header: trial,policy,time_ms,held,perturbation\nIdentifiers: ASCII letters/digits/underscore/hyphen/dot, no quoting.\nFlags: 0 or 1. One perturbation per trial; held baseline required.\nNothing is uploaded. No robot control, network calls, or model training.\n");
+        return new _M0DTPC16result6ResultGssE2Ok("GraspAudit 0.2.0 - offline dexterous-grasp trace evaluation\n\nUsage: moon run --target js cmd/grasp-audit -- INPUT.csv [OPTIONS]\n       INPUT.csv may be - for stdin.\n\n  --format markdown|json|csv   Output format (default: markdown)\n  --horizon-ms N               Evaluation horizon (default: 1000)\n  --dwell-ms N                 Sustained final hold (default: 200)\n  --max-gap-ms N               Maximum sampling gap (default: 250)\n  --min-stable-rate N          Require each policy's stable rate >= N percent\n  --max-censored-rate N        Require each policy's censoring rate <= N percent\n                               Gate percentages: integers 0..100; omitted=off\n  --help                       Show this help\n  --version                    Show version\n\nCSV header: trial,policy,time_ms,held,perturbation\nIdentifiers: ASCII letters/digits/underscore/hyphen/dot, no quoting.\nFlags: 0 or 1. One perturbation per trial; held baseline required.\nExit codes: 0 success, 1 quality gate failed (report still printed), 2 input/usage error.\nNothing is uploaded. No robot control, network calls, or model training.\n");
       }
       if (arg === "--version") {
-        return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1131;
+        return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1165;
       }
-      if (arg === "--format" || (arg === "--horizon-ms" || (arg === "--dwell-ms" || arg === "--max-gap-ms"))) {
+      if (arg === "--format" || (arg === "--horizon-ms" || (arg === "--dwell-ms" || (arg === "--max-gap-ms" || (arg === "--min-stable-rate" || arg === "--max-censored-rate"))))) {
         if ((i + 1 | 0) >= argv.length) {
           const _string_builder = _M0MPB13StringBuilder21StringBuilder_2einner(18);
           _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "missing value for ");
@@ -3491,7 +3618,7 @@ function _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3run() {
             _tmp$3 = false;
           }
           if (_tmp$3) {
-            return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1132;
+            return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1166;
           }
           format = value;
         } else {
@@ -3509,28 +3636,46 @@ function _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3run() {
             _M0MPB13StringBuilder13write__objectGsE(_string_builder, _message);
             return new _M0DTPC16result6ResultGssE3Err(_string_builder.val);
           }
-          let _tmp$3;
-          switch (arg) {
-            case "--horizon-ms": {
-              const _bind$2 = options;
-              _tmp$3 = new _M0TP213grasp_2daudit13grasp_2daudit7Options(number, _bind$2.dwell_ms, _bind$2.max_gap_ms);
-              break;
+          if (arg === "--min-stable-rate" || arg === "--max-censored-rate") {
+            if (number > 100) {
+              const _string_builder = _M0MPB13StringBuilder21StringBuilder_2einner(38);
+              _M0MPB13StringBuilder13write__objectGsE(_string_builder, arg);
+              _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, ": percentage must be between 0 and 100");
+              return new _M0DTPC16result6ResultGssE3Err(_string_builder.val);
             }
-            case "--dwell-ms": {
-              const _bind$3 = options;
-              _tmp$3 = new _M0TP213grasp_2daudit13grasp_2daudit7Options(_bind$3.horizon_ms, number, _bind$3.max_gap_ms);
-              break;
+            let _tmp$3;
+            if (arg === "--min-stable-rate") {
+              const _bind$2 = gates;
+              _tmp$3 = new _M0TP213grasp_2daudit13grasp_2daudit5Gates(number, _bind$2.max_censored_percent);
+            } else {
+              const _bind$2 = gates;
+              _tmp$3 = new _M0TP213grasp_2daudit13grasp_2daudit5Gates(_bind$2.min_stable_percent, number);
             }
-            default: {
-              const _bind$4 = options;
-              _tmp$3 = new _M0TP213grasp_2daudit13grasp_2daudit7Options(_bind$4.horizon_ms, _bind$4.dwell_ms, number);
+            gates = _tmp$3;
+          } else {
+            let _tmp$3;
+            switch (arg) {
+              case "--horizon-ms": {
+                const _bind$2 = options;
+                _tmp$3 = new _M0TP213grasp_2daudit13grasp_2daudit7Options(number, _bind$2.dwell_ms, _bind$2.max_gap_ms);
+                break;
+              }
+              case "--dwell-ms": {
+                const _bind$3 = options;
+                _tmp$3 = new _M0TP213grasp_2daudit13grasp_2daudit7Options(_bind$3.horizon_ms, number, _bind$3.max_gap_ms);
+                break;
+              }
+              default: {
+                const _bind$4 = options;
+                _tmp$3 = new _M0TP213grasp_2daudit13grasp_2daudit7Options(_bind$4.horizon_ms, _bind$4.dwell_ms, number);
+              }
             }
+            options = _tmp$3;
           }
-          options = _tmp$3;
         }
         i = i + 2 | 0;
       } else {
-        if (_M0MPC16string6String11has__prefix(arg, _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6recordS1133)) {
+        if (_M0MPC16string6String11has__prefix(arg, _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6recordS1167)) {
           const _string_builder = _M0MPB13StringBuilder21StringBuilder_2einner(16);
           _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "unknown option: ");
           _M0MPB13StringBuilder13write__objectGsE(_string_builder, arg);
@@ -3540,7 +3685,7 @@ function _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3run() {
         if (_bind === undefined) {
           input = arg;
         } else {
-          return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1134;
+          return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1168;
         }
         i = i + 1 | 0;
       }
@@ -3552,7 +3697,7 @@ function _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3run() {
   const _bind = input;
   let path;
   if (_bind === undefined) {
-    return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1135;
+    return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1169;
   } else {
     const _Some = _bind;
     path = _Some;
@@ -3566,9 +3711,31 @@ function _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3run() {
   } else {
     const _Ok = _bind$2;
     const _report = _Ok._0;
-    const _bind$3 = format;
+    const _bind$3 = _M0FP213grasp_2daudit13grasp_2daudit12check__gates(_report, gates);
+    if (_bind$3.$tag === 0) {
+      const _Err = _bind$3;
+      const _message = _Err._0;
+      return new _M0DTPC16result6ResultGssE3Err(_message);
+    } else {
+      const _Ok$2 = _bind$3;
+      const _failures = _Ok$2._0;
+      const _bind$4 = _failures.length;
+      let _tmp = 0;
+      while (true) {
+        const _ = _tmp;
+        if (_ < _bind$4) {
+          const failure = _failures[_];
+          _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit13gate__failure(failure);
+          _tmp = _ + 1 | 0;
+          continue;
+        } else {
+          break;
+        }
+      }
+    }
+    const _bind$4 = format;
     let _tmp;
-    switch (_bind$3) {
+    switch (_bind$4) {
       case "json": {
         _tmp = _M0FP213grasp_2daudit13grasp_2daudit12render__json(_report);
         break;

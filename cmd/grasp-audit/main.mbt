@@ -27,9 +27,13 @@ extern "js" fn error_exit(message : String) -> Unit =
   #|(message) => { process.stderr.write('grasp-audit: ' + message + '\n'); process.exitCode = 2; }
 
 ///|
+extern "js" fn gate_failure(message : String) -> Unit =
+  #|(message) => { process.stderr.write('grasp-audit: quality gate: ' + message + '\n'); process.exitCode = 1; }
+
+///|
 fn help() -> String {
   let text =
-    #|GraspAudit 0.1.0 - offline dexterous-grasp trace evaluation
+    #|GraspAudit 0.2.0 - offline dexterous-grasp trace evaluation
     #|
     #|Usage: moon run --target js cmd/grasp-audit -- INPUT.csv [OPTIONS]
     #|       INPUT.csv may be - for stdin.
@@ -38,12 +42,16 @@ fn help() -> String {
     #|  --horizon-ms N               Evaluation horizon (default: 1000)
     #|  --dwell-ms N                 Sustained final hold (default: 200)
     #|  --max-gap-ms N               Maximum sampling gap (default: 250)
+    #|  --min-stable-rate N          Require each policy's stable rate >= N percent
+    #|  --max-censored-rate N        Require each policy's censoring rate <= N percent
+    #|                               Gate percentages: integers 0..100; omitted=off
     #|  --help                       Show this help
     #|  --version                    Show version
     #|
     #|CSV header: trial,policy,time_ms,held,perturbation
     #|Identifiers: ASCII letters/digits/underscore/hyphen/dot, no quoting.
     #|Flags: 0 or 1. One perturbation per trial; held baseline required.
+    #|Exit codes: 0 success, 1 quality gate failed (report still printed), 2 input/usage error.
     #|Nothing is uploaded. No robot control, network calls, or model training.
     #|
   text
@@ -58,6 +66,10 @@ fn run() -> Result[String, String] {
   let mut input : String? = None
   let mut format = "markdown"
   let mut options = @audit.default_options()
+  let mut gates : @audit.Gates = {
+    min_stable_percent: None,
+    max_censored_percent: None,
+  }
   let mut i = 0
   while i < argv.length() {
     let arg = argv[i]
@@ -65,12 +77,14 @@ fn run() -> Result[String, String] {
       return Ok(help())
     }
     if arg == "--version" {
-      return Ok("grasp-audit 0.1.0\n")
+      return Ok("grasp-audit 0.2.0\n")
     }
     if arg == "--format" ||
       arg == "--horizon-ms" ||
       arg == "--dwell-ms" ||
-      arg == "--max-gap-ms" {
+      arg == "--max-gap-ms" ||
+      arg == "--min-stable-rate" ||
+      arg == "--max-censored-rate" {
       if i + 1 >= argv.length() {
         return Err("missing value for \{arg}")
       }
@@ -85,10 +99,21 @@ fn run() -> Result[String, String] {
           Ok(n) => n
           Err(message) => return Err("\{arg}: \{message}")
         }
-        options = match arg {
-          "--horizon-ms" => { ..options, horizon_ms: number, }
-          "--dwell-ms" => { ..options, dwell_ms: number, }
-          _ => { ..options, max_gap_ms: number, }
+        if arg == "--min-stable-rate" || arg == "--max-censored-rate" {
+          if number > 100 {
+            return Err("\{arg}: percentage must be between 0 and 100")
+          }
+          gates = if arg == "--min-stable-rate" {
+            { ..gates, min_stable_percent: Some(number), }
+          } else {
+            { ..gates, max_censored_percent: Some(number), }
+          }
+        } else {
+          options = match arg {
+            "--horizon-ms" => { ..options, horizon_ms: number, }
+            "--dwell-ms" => { ..options, dwell_ms: number, }
+            _ => { ..options, max_gap_ms: number, }
+          }
         }
       }
       i = i + 2
@@ -110,7 +135,14 @@ fn run() -> Result[String, String] {
   let text = read_input(path)
   match @audit.analyze_csv(text, options) {
     Err(message) => Err(message)
-    Ok(report) =>
+    Ok(report) => {
+      match @audit.check_gates(report, gates) {
+        Err(message) => return Err(message)
+        Ok(failures) =>
+          for failure in failures {
+            gate_failure(failure)
+          }
+      }
       Ok(
         match format {
           "json" => @audit.render_json(report)
@@ -118,6 +150,7 @@ fn run() -> Result[String, String] {
           _ => @audit.render_markdown(report)
         },
       )
+    }
   }
 }
 

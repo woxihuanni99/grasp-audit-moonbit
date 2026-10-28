@@ -45,7 +45,7 @@ def oracle(samples, horizon=1000, dwell=200, max_gap=250):
 class CLIIntegration(unittest.TestCase):
     def test_help_and_version(self):
         self.assertIn(b'GraspAudit', cli('--help').stdout)
-        self.assertEqual(cli('--version').stdout, b'grasp-audit 0.1.0\n')
+        self.assertEqual(cli('--version').stdout, b'grasp-audit 0.2.0\n')
 
     def test_golden_json(self):
         result = cli('examples/synthetic.csv', '--format', 'json')
@@ -98,6 +98,47 @@ class CLIIntegration(unittest.TestCase):
         text = HEADER + 'x,p,0,1,0\nx,p,100,0,1\nx,p,300,0,0\nx,p,500,0,0\nx,p,700,0,0\nx,p,900,0,0\nx,p,901,1,0\nx,p,1100,1,0\n'
         result = cli('-', '--format', 'json', stdin=text.encode())
         self.assertEqual(json.loads(result.stdout)['trials'][0]['outcome'], 'unrecovered')
+
+    def test_quality_gates_pass_inclusive_boundaries(self):
+        result = cli('examples/synthetic.csv', '--format', 'json',
+                     '--min-stable-rate', '66', '--max-censored-rate', '25')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stderr, b'')
+        self.assertEqual(len(json.loads(result.stdout)['trials']), 8)
+
+    def test_quality_gate_failure_preserves_report_and_names_policy(self):
+        result = cli('examples/synthetic.csv', '--format', 'json', '--min-stable-rate', '67')
+        self.assertEqual(result.returncode, 1)
+        self.assertIn(b"policy 'baseline'", result.stderr)
+        self.assertNotIn(b"policy 'feedback'", result.stderr)
+        self.assertEqual(len(json.loads(result.stdout)['policies']), 2)
+
+    def test_censoring_gate_checks_every_policy(self):
+        result = cli('examples/synthetic.csv', '--format', 'csv', '--max-censored-rate', '24')
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(result.stderr.count(b'quality gate:'), 2)
+        self.assertEqual(len(list(csv.DictReader(io.StringIO(result.stdout.decode())))), 8)
+
+    def test_combined_gates_report_all_failures(self):
+        result = cli('examples/synthetic.csv', '--min-stable-rate', '67', '--max-censored-rate', '24')
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(result.stderr.count(b'quality gate:'), 3)
+        self.assertIn(b'# GraspAudit report', result.stdout)
+
+    def test_quality_gate_undefined_rate_is_failure_not_zero(self):
+        text = HEADER + 'x,p,0,1,0\nx,p,100,1,1\nx,p,200,1,0\n'
+        result = cli('-', '--format', 'json', '--min-stable-rate', '0', stdin=text.encode())
+        self.assertEqual(result.returncode, 1)
+        self.assertIn(b'undefined', result.stderr)
+        self.assertIsNone(json.loads(result.stdout)['policies'][0]['stable_rate'])
+
+    def test_invalid_gate_options_are_usage_errors(self):
+        for args in [('--min-stable-rate', '101'), ('--max-censored-rate', '-1'),
+                     ('--min-stable-rate', '66.7'), ('--max-censored-rate',)]:
+            with self.subTest(args=args):
+                result = cli('examples/synthetic.csv', *args)
+                self.assertEqual(result.returncode, 2)
+                self.assertEqual(result.stdout, b'')
 
     def test_500_seeded_random_traces_against_independent_oracle(self):
         rng = random.Random(20261028)
