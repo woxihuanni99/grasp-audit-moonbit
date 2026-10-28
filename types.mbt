@@ -49,6 +49,10 @@ pub(all) struct TrialResult {
   event_ms : Int32
   outcome : Outcome
   recovery_ms : Int32?
+  held_ms : Int32?
+  lost_ms : Int32?
+  first_loss_ms : Int32?
+  final_stable_ms : Int32?
   reason : String
 }
 

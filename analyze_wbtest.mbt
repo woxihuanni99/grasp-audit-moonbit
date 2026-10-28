@@ -254,3 +254,61 @@ test "summary counts match actual outcomes" {
   assert_eq(summary.censored, 1)
   assert_eq(summary.median_recovery_ms, Some(300.0))
 }
+
+///|
+test "diagnostics retained duration and no loss" {
+  let result = evaluate(
+    fixture([true, true, true, true, true, true, true, true, true, true, true]),
+  )
+  assert_eq(result.held_ms, Some(1000))
+  assert_eq(result.lost_ms, Some(0))
+  assert_eq(result.first_loss_ms, None)
+  assert_eq(result.final_stable_ms, Some(1000))
+}
+
+///|
+test "diagnostics sum all loss intervals not only latency" {
+  let result = evaluate(
+    fixture([
+      false, false, false, true, true, true, false, false, true, true, true,
+    ]),
+  )
+  assert_eq(result.held_ms, Some(500))
+  assert_eq(result.lost_ms, Some(500))
+  assert_eq(result.first_loss_ms, Some(0))
+  assert_eq(result.final_stable_ms, Some(200))
+  assert_eq(result.recovery_ms, Some(800))
+}
+
+///|
+test "diagnostics endpoint loss has zero interval length" {
+  let result = evaluate(
+    fixture([true, true, true, true, true, true, true, true, true, true, false]),
+  )
+  assert_eq(result.lost_ms, Some(0))
+  assert_eq(result.first_loss_ms, Some(1000))
+  assert_eq(result.final_stable_ms, Some(0))
+  assert_eq(outcome_name(result.outcome), "unrecovered")
+}
+
+///|
+test "diagnostics are null rather than partial for censored trials" {
+  let result = evaluate(fixture([false, true]))
+  assert_eq(result.held_ms, None)
+  assert_eq(result.lost_ms, None)
+  assert_eq(result.first_loss_ms, None)
+  assert_eq(result.final_stable_ms, None)
+}
+
+///|
+test "diagnostics clip last interval and ignore future observation" {
+  let trial = fixture([
+    true, true, false, false, true, true, true, true, true, true,
+  ])
+  trial.samples.push({ time_ms: 1150, held: false, perturbation: false, })
+  let result = evaluate(trial)
+  assert_eq(result.held_ms, Some(800))
+  assert_eq(result.lost_ms, Some(200))
+  assert_eq(result.first_loss_ms, Some(200))
+  assert_eq(result.final_stable_ms, Some(600))
+}

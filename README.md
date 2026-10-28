@@ -26,6 +26,7 @@ node dist/grasp-audit.cjs examples/synthetic.csv --format csv > results.csv
 - 固定窗口评估：观察到的保持、最终稳定恢复、未恢复、缺失/截断。
 - 区分短暂恢复与**一直持续到窗口末端**的恢复，防止“闪一下就成功”。
 - 对采样断档和录制过早结束单独计数，不偷偷当成失败或成功。
+- 每试次诊断：累计保持/失持时长、首次失持时刻、最终稳定段时长。
 - 按策略汇总保持率、稳定率、丢失后的条件恢复率、恢复时间中位数。
 - 输出 Markdown 报告、JSON 汇总和逐试次 CSV；支持标准输入。
 - 分析、解析、汇总和报告主体为 MoonBit；少量 JS FFI 只负责本地文件与终端 I/O。
@@ -80,7 +81,7 @@ bash scripts/build-dist.sh
 bash scripts/verify.sh
 ```
 
-已实际通过：**19 个 MoonBit 单元测试，在 JS 和 Wasm GC 两个后端各跑一次；10 个 CLI 集成测试，其中包含 500 条固定随机种子轨迹与独立 Python 参考实现逐项对照。** 见 [验证记录](docs/VALIDATION.md)。JS 是 CLI 支持的后端；Wasm GC 测试针对可移植分析库。
+已实际通过：**24 个 MoonBit 单元测试，在 JS 和 Wasm GC 两个后端各跑一次；10 个 CLI 集成测试，其中包含 500 条固定随机种子轨迹与独立 Python 参考实现逐项对照。** 见 [验证记录](docs/VALIDATION.md)。JS 是 CLI 支持的后端；Wasm GC 测试针对可移植分析库。
 
 ## 示例输出
 

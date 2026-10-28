@@ -224,13 +224,17 @@ function _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE
   this._0 = param0;
 }
 _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE2Ok.prototype.$tag = 1;
-function _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(param0, param1, param2, param3, param4, param5) {
+function _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(param0, param1, param2, param3, param4, param5, param6, param7, param8, param9) {
   this.trial = param0;
   this.policy = param1;
   this.event_ms = param2;
   this.outcome = param3;
   this.recovery_ms = param4;
-  this.reason = param5;
+  this.held_ms = param5;
+  this.lost_ms = param6;
+  this.first_loss_ms = param7;
+  this.final_stable_ms = param8;
+  this.reason = param9;
 }
 function _M0DTPC16option6OptionGdE4None() {}
 _M0DTPC16option6OptionGdE4None.prototype.$tag = 0;
@@ -293,23 +297,23 @@ const _M0FPC28internal7strconv14base__err__str = "invalid base";
 const _M0FPC28internal7strconv15range__err__str = "value out of range";
 const _M0FPC28internal7strconv16syntax__err__str = "invalid syntax";
 const _M0FP213grasp_2daudit13grasp_2daudit16default__optionsN6recordS894 = new _M0TP213grasp_2daudit13grasp_2daudit7Options(1000, 200, 250);
-const _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1033 = new _M0DTPC16result6ResultGusE3Err("horizon-ms must be between 1 and 1000000000");
-const _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1034 = new _M0DTPC16result6ResultGusE3Err("dwell-ms must be positive and no greater than horizon-ms");
-const _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1035 = new _M0DTPC16result6ResultGusE3Err("max-gap-ms must be between 1 and 1000000000");
+const _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1037 = new _M0DTPC16result6ResultGusE3Err("horizon-ms must be between 1 and 1000000000");
+const _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1038 = new _M0DTPC16result6ResultGusE3Err("dwell-ms must be positive and no greater than horizon-ms");
+const _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1039 = new _M0DTPC16result6ResultGusE3Err("max-gap-ms must be between 1 and 1000000000");
 const _M0FPB4seed = _M0FPB12random__seed();
 const _M0MPC16string6String4trimN6recordS442 = new _M0TPC16string10StringView("\t\n\r ", 0, 4);
 const _M0FPC28internal7strconv20parse__int64_2einnerN6recordS849 = new _M0TPC16string10StringView("", 0, 0);
-const _M0FP213grasp_2daudit13grasp_2daudit18parse__nonnegativeN6constrS977 = new _M0DTPC16result6ResultGisE3Err("expected a decimal integer between 0 and 1000000000");
+const _M0FP213grasp_2daudit13grasp_2daudit18parse__nonnegativeN6constrS981 = new _M0DTPC16result6ResultGisE3Err("expected a decimal integer between 0 and 1000000000");
 const _M0MPC16string10StringView4findN6constrS307 = 0;
-const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS993 = new _M0TPC16string10StringView("\n", 0, 1);
-const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS994 = new _M0DTPC16result6ResultGRPB5ArrayGRP213grasp_2daudit13grasp_2daudit5TrialEsE3Err("input exceeds 200000 sample rows");
-const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS995 = new _M0TPC16string10StringView(",", 0, 1);
-const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS996 = new _M0DTPC16result6ResultGRPB5ArrayGRP213grasp_2daudit13grasp_2daudit5TrialEsE3Err("input contains no sample rows");
-const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1124 = new _M0DTPC16result6ResultGssE2Ok("grasp-audit 0.1.0\n");
-const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1125 = new _M0DTPC16result6ResultGssE3Err("format must be markdown, json, or csv");
-const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6recordS1126 = new _M0TPC16string10StringView("--", 0, 2);
-const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1127 = new _M0DTPC16result6ResultGssE3Err("expected one input file");
-const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1128 = new _M0DTPC16result6ResultGssE3Err("missing input file; use --help");
+const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS997 = new _M0TPC16string10StringView("\n", 0, 1);
+const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS998 = new _M0DTPC16result6ResultGRPB5ArrayGRP213grasp_2daudit13grasp_2daudit5TrialEsE3Err("input exceeds 200000 sample rows");
+const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS999 = new _M0TPC16string10StringView(",", 0, 1);
+const _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS1000 = new _M0DTPC16result6ResultGRPB5ArrayGRP213grasp_2daudit13grasp_2daudit5TrialEsE3Err("input contains no sample rows");
+const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1131 = new _M0DTPC16result6ResultGssE2Ok("grasp-audit 0.1.0\n");
+const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1132 = new _M0DTPC16result6ResultGssE3Err("format must be markdown, json, or csv");
+const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6recordS1133 = new _M0TPC16string10StringView("--", 0, 2);
+const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1134 = new _M0DTPC16result6ResultGssE3Err("expected one input file");
+const _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1135 = new _M0DTPC16result6ResultGssE3Err("missing input file; use --help");
 function _M0FPB13consume4__acc(acc, input) {
   const _p = (acc >>> 0) + ((Math.imul(input, -1028477379) | 0) >>> 0) | 0;
   const _p$2 = 17;
@@ -2580,6 +2584,15 @@ function _M0FP213grasp_2daudit13grasp_2daudit13outcome__name(outcome) {
     }
   }
 }
+function _M0FP213grasp_2daudit13grasp_2daudit12optional__ms(value, missing) {
+  if (value === undefined) {
+    return missing;
+  } else {
+    const _Some = value;
+    const _ms = _Some;
+    return _M0MPC13int3Int18to__string_2einner(_ms, 10);
+  }
+}
 function _M0FP213grasp_2daudit13grasp_2daudit7percent(numerator, denominator) {
   if (denominator === 0) {
     return "N/A";
@@ -2607,7 +2620,7 @@ function _M0FP213grasp_2daudit13grasp_2daudit4rate(numerator, denominator) {
 function _M0FP213grasp_2daudit13grasp_2daudit12render__json(report) {
   const o = report.options;
   const _string_builder = _M0MPB13StringBuilder21StringBuilder_2einner(84);
-  _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "{\"schema_version\":1,\"options\":{\"horizon_ms\":");
+  _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "{\"schema_version\":2,\"options\":{\"horizon_ms\":");
   _M0MPB13StringBuilder13write__objectGiE(_string_builder, o.horizon_ms);
   _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, ",\"dwell_ms\":");
   _M0MPB13StringBuilder13write__objectGiE(_string_builder, o.dwell_ms);
@@ -2683,7 +2696,7 @@ function _M0FP213grasp_2daudit13grasp_2daudit12render__json(report) {
         latency = _M0MPC13int3Int18to__string_2einner(_ms, 10);
       }
       const _tmp = output;
-      const _string_builder$2 = _M0MPB13StringBuilder21StringBuilder_2einner(76);
+      const _string_builder$2 = _M0MPB13StringBuilder21StringBuilder_2einner(134);
       _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, "{\"trial\":\"");
       _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, _trial.trial);
       _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, "\",\"policy\":\"");
@@ -2694,6 +2707,14 @@ function _M0FP213grasp_2daudit13grasp_2daudit12render__json(report) {
       _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, _M0FP213grasp_2daudit13grasp_2daudit13outcome__name(_trial.outcome));
       _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, "\",\"recovery_ms\":");
       _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, latency);
+      _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, ",\"held_ms\":");
+      _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, _M0FP213grasp_2daudit13grasp_2daudit12optional__ms(_trial.held_ms, "null"));
+      _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, ",\"lost_ms\":");
+      _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, _M0FP213grasp_2daudit13grasp_2daudit12optional__ms(_trial.lost_ms, "null"));
+      _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, ",\"first_loss_ms\":");
+      _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, _M0FP213grasp_2daudit13grasp_2daudit12optional__ms(_trial.first_loss_ms, "null"));
+      _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, ",\"final_stable_ms\":");
+      _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, _M0FP213grasp_2daudit13grasp_2daudit12optional__ms(_trial.final_stable_ms, "null"));
       _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, ",\"reason\":\"");
       _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, _trial.reason);
       _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, "\"}");
@@ -2704,7 +2725,7 @@ function _M0FP213grasp_2daudit13grasp_2daudit12render__json(report) {
   return `${output}]}\n`;
 }
 function _M0FP213grasp_2daudit13grasp_2daudit11render__csv(report) {
-  let output = "trial,policy,event_ms,outcome,recovery_ms,reason\n";
+  let output = "trial,policy,event_ms,outcome,recovery_ms,reason,held_ms,lost_ms,first_loss_ms,final_stable_ms\n";
   const _bind = report.trials;
   const _bind$2 = _bind.length;
   let _tmp = 0;
@@ -2722,7 +2743,7 @@ function _M0FP213grasp_2daudit13grasp_2daudit11render__csv(report) {
         latency = _M0MPC13int3Int18to__string_2einner(_ms, 10);
       }
       const _tmp$2 = output;
-      const _string_builder = _M0MPB13StringBuilder21StringBuilder_2einner(6);
+      const _string_builder = _M0MPB13StringBuilder21StringBuilder_2einner(10);
       _M0MPB13StringBuilder13write__objectGsE(_string_builder, trial.trial);
       _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, ",");
       _M0MPB13StringBuilder13write__objectGsE(_string_builder, trial.policy);
@@ -2734,6 +2755,14 @@ function _M0FP213grasp_2daudit13grasp_2daudit11render__csv(report) {
       _M0MPB13StringBuilder13write__objectGsE(_string_builder, latency);
       _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, ",");
       _M0MPB13StringBuilder13write__objectGsE(_string_builder, trial.reason);
+      _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, ",");
+      _M0MPB13StringBuilder13write__objectGsE(_string_builder, _M0FP213grasp_2daudit13grasp_2daudit12optional__ms(trial.held_ms, ""));
+      _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, ",");
+      _M0MPB13StringBuilder13write__objectGsE(_string_builder, _M0FP213grasp_2daudit13grasp_2daudit12optional__ms(trial.lost_ms, ""));
+      _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, ",");
+      _M0MPB13StringBuilder13write__objectGsE(_string_builder, _M0FP213grasp_2daudit13grasp_2daudit12optional__ms(trial.first_loss_ms, ""));
+      _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, ",");
+      _M0MPB13StringBuilder13write__objectGsE(_string_builder, _M0FP213grasp_2daudit13grasp_2daudit12optional__ms(trial.final_stable_ms, ""));
       _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "\n");
       output = `${_tmp$2}${_string_builder.val}`;
       _tmp = _ + 1 | 0;
@@ -2809,7 +2838,7 @@ function _M0FP213grasp_2daudit13grasp_2daudit16render__markdown(report) {
     }
   }
   output = `${output}\nStable rate = (retained + recovered) / complete trials. Recovery given loss excludes retained trials. Censored trials are excluded from all rates; exclusions may bias comparisons.\n\n`;
-  output = `${output}## Trial audit trail\n\n| Trial | Policy | Outcome | Recovery (ms) | Reason |\n|---|---|---|---:|---|\n`;
+  output = `${output}## Trial audit trail\n\n| Trial | Policy | Outcome | Recovery (ms) | Lost (ms) | Final held (ms) | Reason |\n|---|---|---|---:|---:|---:|---|\n`;
   const _bind$3 = report.trials;
   const _bind$4 = _bind$3.length;
   let _tmp$3 = 0;
@@ -2827,7 +2856,7 @@ function _M0FP213grasp_2daudit13grasp_2daudit16render__markdown(report) {
         latency = _M0MPC13int3Int18to__string_2einner(_ms, 10);
       }
       const _tmp$4 = output;
-      const _string_builder$2 = _M0MPB13StringBuilder21StringBuilder_2einner(17);
+      const _string_builder$2 = _M0MPB13StringBuilder21StringBuilder_2einner(23);
       _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, "| ");
       _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, trial.trial);
       _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, " | ");
@@ -2836,6 +2865,10 @@ function _M0FP213grasp_2daudit13grasp_2daudit16render__markdown(report) {
       _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, _M0FP213grasp_2daudit13grasp_2daudit13outcome__name(trial.outcome));
       _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, " | ");
       _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, latency);
+      _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, " | ");
+      _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, _M0FP213grasp_2daudit13grasp_2daudit12optional__ms(trial.lost_ms, "N/A"));
+      _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, " | ");
+      _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, _M0FP213grasp_2daudit13grasp_2daudit12optional__ms(trial.final_stable_ms, "N/A"));
       _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, " | ");
       _M0MPB13StringBuilder13write__objectGsE(_string_builder$2, trial.reason);
       _M0IPB13StringBuilderPB6Logger13write__string(_string_builder$2, " |\n");
@@ -2913,7 +2946,7 @@ function _M0FP213grasp_2daudit13grasp_2daudit9valid__id(value) {
 }
 function _M0FP213grasp_2daudit13grasp_2daudit18parse__nonnegative(value) {
   if (value.length === 0 || value.length > 10) {
-    return _M0FP213grasp_2daudit13grasp_2daudit18parse__nonnegativeN6constrS977;
+    return _M0FP213grasp_2daudit13grasp_2daudit18parse__nonnegativeN6constrS981;
   }
   const _bind = value.length;
   let _tmp = 0;
@@ -2991,7 +3024,7 @@ function _M0FP213grasp_2daudit13grasp_2daudit18parse__nonnegative(value) {
   return new _M0DTPC16result6ResultGisE2Ok(parsed);
 }
 function _M0FP213grasp_2daudit13grasp_2daudit10parse__csv(text) {
-  const lines = _M0MPB4Iter9to__arrayGRPC16string10StringViewE(_M0MPC16string6String5split(text, _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS993));
+  const lines = _M0MPB4Iter9to__arrayGRPC16string10StringViewE(_M0MPC16string6String5split(text, _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS997));
   const trials = [];
   const _bind = [];
   const index = _M0MPB3Map3MapGsiE(new _M0TPB9ArrayViewGUsiEE(_bind, 0, 0), undefined);
@@ -3025,9 +3058,9 @@ function _M0FP213grasp_2daudit13grasp_2daudit10parse__csv(text) {
       }
       rows = rows + 1 | 0;
       if (rows > 200000) {
-        return _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS994;
+        return _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS998;
       }
-      const fields = _M0MPB4Iter9to__arrayGRPC16string10StringViewE(_M0MPB4Iter3mapGRPC16string10StringViewsE(_M0MPC16string6String5split(line, _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS995), (x) => _M0MPC16string10StringView9to__owned(x)));
+      const fields = _M0MPB4Iter9to__arrayGRPC16string10StringViewE(_M0MPB4Iter3mapGRPC16string10StringViewsE(_M0MPC16string6String5split(line, _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6recordS999), (x) => _M0MPC16string10StringView9to__owned(x)));
       if (fields.length !== 5) {
         const _string_builder = _M0MPB13StringBuilder21StringBuilder_2einner(41);
         _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "line ");
@@ -3126,19 +3159,19 @@ function _M0FP213grasp_2daudit13grasp_2daudit10parse__csv(text) {
     }
   }
   if (trials.length === 0) {
-    return _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS996;
+    return _M0FP213grasp_2daudit13grasp_2daudit10parse__csvN6constrS1000;
   }
   return new _M0DTPC16result6ResultGRPB5ArrayGRP213grasp_2daudit13grasp_2daudit5TrialEsE2Ok(trials);
 }
 function _M0FP213grasp_2daudit13grasp_2daudit17validate__options(options) {
   if (options.horizon_ms <= 0 || options.horizon_ms > 1000000000) {
-    return _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1033;
+    return _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1037;
   }
   if (options.dwell_ms <= 0 || options.dwell_ms > options.horizon_ms) {
-    return _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1034;
+    return _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1038;
   }
   if (options.max_gap_ms <= 0 || options.max_gap_ms > 1000000000) {
-    return _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1035;
+    return _M0FP213grasp_2daudit13grasp_2daudit17validate__optionsN6constrS1039;
   }
   return new _M0DTPC16result6ResultGusE2Ok(undefined);
 }
@@ -3211,14 +3244,12 @@ function _M0FP213grasp_2daudit13grasp_2daudit14analyze__trial(trial, options) {
   }
   const event_ms = _M0MPC15array5Array2atGsE(samples, event_index).time_ms;
   const deadline = event_ms + options.horizon_ms | 0;
-  const base_trial = trial.id;
-  const base_policy = trial.policy;
-  const base_recovery_ms = undefined;
+  const base = new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(trial.id, trial.policy, event_ms, 3, undefined, undefined, undefined, undefined, undefined, "");
   if ((_M0MPC15array5Array2atGsE(samples, event_index).time_ms - _M0MPC15array5Array2atGsE(samples, event_index - 1 | 0).time_ms | 0) > options.max_gap_ms) {
-    return new _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE2Ok(new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(base_trial, base_policy, event_ms, 3, base_recovery_ms, "baseline_gap"));
+    return new _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE2Ok(new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(base.trial, base.policy, base.event_ms, base.outcome, base.recovery_ms, base.held_ms, base.lost_ms, base.first_loss_ms, base.final_stable_ms, "baseline_gap"));
   }
   if (_M0MPC15array5Array2atGsE(samples, samples.length - 1 | 0).time_ms < deadline) {
-    return new _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE2Ok(new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(base_trial, base_policy, event_ms, 3, base_recovery_ms, "incomplete_horizon"));
+    return new _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE2Ok(new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(base.trial, base.policy, base.event_ms, base.outcome, base.recovery_ms, base.held_ms, base.lost_ms, base.first_loss_ms, base.final_stable_ms, "incomplete_horizon"));
   }
   let _tmp = event_index;
   while (true) {
@@ -3228,7 +3259,7 @@ function _M0FP213grasp_2daudit13grasp_2daudit14analyze__trial(trial, options) {
         break;
       }
       if ((_M0MPC15array5Array2atGsE(samples, i + 1 | 0).time_ms - _M0MPC15array5Array2atGsE(samples, i).time_ms | 0) > options.max_gap_ms) {
-        return new _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE2Ok(new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(base_trial, base_policy, event_ms, 3, base_recovery_ms, "sample_gap"));
+        return new _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE2Ok(new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(base.trial, base.policy, base.event_ms, base.outcome, base.recovery_ms, base.held_ms, base.lost_ms, base.first_loss_ms, base.final_stable_ms, "sample_gap"));
       }
       _tmp = i + 1 | 0;
       continue;
@@ -3236,6 +3267,8 @@ function _M0FP213grasp_2daudit13grasp_2daudit14analyze__trial(trial, options) {
       break;
     }
   }
+  let held_ms = 0;
+  let first_loss_ms = undefined;
   let any_loss = false;
   let was_held = false;
   let stable_start = event_ms;
@@ -3247,11 +3280,19 @@ function _M0FP213grasp_2daudit13grasp_2daudit14analyze__trial(trial, options) {
       if (sample.time_ms > deadline) {
         break;
       }
+      if (sample.time_ms < deadline && sample.held) {
+        const next_time = _M0MPC15array5Array2atGsE(samples, i + 1 | 0).time_ms;
+        const interval_end = next_time < deadline ? next_time : deadline;
+        held_ms = (held_ms + interval_end | 0) - sample.time_ms | 0;
+      }
       if (sample.held) {
         if (!was_held) {
           stable_start = sample.time_ms;
         }
       } else {
+        if (!any_loss) {
+          first_loss_ms = sample.time_ms - event_ms | 0;
+        }
         any_loss = true;
       }
       was_held = sample.held;
@@ -3261,7 +3302,8 @@ function _M0FP213grasp_2daudit13grasp_2daudit14analyze__trial(trial, options) {
       break;
     }
   }
-  return !any_loss ? new _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE2Ok(new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(base_trial, base_policy, event_ms, 0, base_recovery_ms, "held_through_horizon")) : was_held && (deadline - stable_start | 0) >= options.dwell_ms ? new _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE2Ok(new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(base_trial, base_policy, event_ms, 1, stable_start - event_ms | 0, "final_run_meets_dwell")) : new _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE2Ok(new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(base_trial, base_policy, event_ms, 2, base_recovery_ms, "no_sustained_final_recovery"));
+  const diagnosed = new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(base.trial, base.policy, base.event_ms, base.outcome, base.recovery_ms, held_ms, options.horizon_ms - held_ms | 0, first_loss_ms, was_held ? deadline - stable_start | 0 : 0, base.reason);
+  return !any_loss ? new _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE2Ok(new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(diagnosed.trial, diagnosed.policy, diagnosed.event_ms, 0, diagnosed.recovery_ms, diagnosed.held_ms, diagnosed.lost_ms, diagnosed.first_loss_ms, diagnosed.final_stable_ms, "held_through_horizon")) : was_held && (deadline - stable_start | 0) >= options.dwell_ms ? new _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE2Ok(new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(diagnosed.trial, diagnosed.policy, diagnosed.event_ms, 1, stable_start - event_ms | 0, diagnosed.held_ms, diagnosed.lost_ms, diagnosed.first_loss_ms, diagnosed.final_stable_ms, "final_run_meets_dwell")) : new _M0DTPC16result6ResultGRP213grasp_2daudit13grasp_2daudit11TrialResultsE2Ok(new _M0TP213grasp_2daudit13grasp_2daudit11TrialResult(diagnosed.trial, diagnosed.policy, diagnosed.event_ms, 2, diagnosed.recovery_ms, diagnosed.held_ms, diagnosed.lost_ms, diagnosed.first_loss_ms, diagnosed.final_stable_ms, "no_sustained_final_recovery"));
 }
 function _M0FP213grasp_2daudit13grasp_2daudit6median(values) {
   if (values.length === 0) {
@@ -3421,7 +3463,7 @@ function _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3run() {
         return new _M0DTPC16result6ResultGssE2Ok("GraspAudit 0.1.0 - offline dexterous-grasp trace evaluation\n\nUsage: moon run --target js cmd/grasp-audit -- INPUT.csv [OPTIONS]\n       INPUT.csv may be - for stdin.\n\n  --format markdown|json|csv   Output format (default: markdown)\n  --horizon-ms N               Evaluation horizon (default: 1000)\n  --dwell-ms N                 Sustained final hold (default: 200)\n  --max-gap-ms N               Maximum sampling gap (default: 250)\n  --help                       Show this help\n  --version                    Show version\n\nCSV header: trial,policy,time_ms,held,perturbation\nIdentifiers: ASCII letters/digits/underscore/hyphen/dot, no quoting.\nFlags: 0 or 1. One perturbation per trial; held baseline required.\nNothing is uploaded. No robot control, network calls, or model training.\n");
       }
       if (arg === "--version") {
-        return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1124;
+        return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1131;
       }
       if (arg === "--format" || (arg === "--horizon-ms" || (arg === "--dwell-ms" || arg === "--max-gap-ms"))) {
         if ((i + 1 | 0) >= argv.length) {
@@ -3449,7 +3491,7 @@ function _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3run() {
             _tmp$3 = false;
           }
           if (_tmp$3) {
-            return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1125;
+            return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1132;
           }
           format = value;
         } else {
@@ -3488,7 +3530,7 @@ function _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3run() {
         }
         i = i + 2 | 0;
       } else {
-        if (_M0MPC16string6String11has__prefix(arg, _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6recordS1126)) {
+        if (_M0MPC16string6String11has__prefix(arg, _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6recordS1133)) {
           const _string_builder = _M0MPB13StringBuilder21StringBuilder_2einner(16);
           _M0IPB13StringBuilderPB6Logger13write__string(_string_builder, "unknown option: ");
           _M0MPB13StringBuilder13write__objectGsE(_string_builder, arg);
@@ -3498,7 +3540,7 @@ function _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3run() {
         if (_bind === undefined) {
           input = arg;
         } else {
-          return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1127;
+          return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1134;
         }
         i = i + 1 | 0;
       }
@@ -3510,7 +3552,7 @@ function _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3run() {
   const _bind = input;
   let path;
   if (_bind === undefined) {
-    return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1128;
+    return _M0FP413grasp_2daudit13grasp_2daudit3cmd13grasp_2daudit3runN6constrS1135;
   } else {
     const _Some = _bind;
     path = _Some;

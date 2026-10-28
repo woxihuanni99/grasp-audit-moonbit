@@ -1,4 +1,4 @@
-# Metric specification (v1)
+# Metric specification (JSON schema v2)
 
 This is a trace-auditing specification, not a validated robotics benchmark.
 
@@ -65,3 +65,18 @@ At event-relative times 0,100,…,1000 ms, with H=1000, D=200:
 Recommended real-data protocol: pre-register the held rule, H/D/G, perturbation,
 object set, trial count and exclusion criteria; retain per-trial outputs and
 report censoring. Do not tune the thresholds after seeing which policy wins.
+
+## Per-trial diagnostics
+
+JSON schema v2 adds `held_ms`, `lost_ms`, `first_loss_ms`, and `final_stable_ms`.
+The CSV export appends these columns after the original columns. All durations
+use clipped sample-and-hold intervals; `held_ms + lost_ms = H` for complete trials.
+`first_loss_ms` is the event-relative time of the first observed loss, or null
+when no loss was observed. `final_stable_ms` is the final held run's duration to
+the horizon, including when too short to qualify as recovery; it is zero if the
+endpoint is not held. All four diagnostics are null for censored trials so a
+partial recording cannot be mistaken for full-window evidence.
+
+A loss exactly at the endpoint makes the outcome unrecovered but contributes
+zero to the duration integral: `lost_ms=0`, `first_loss_ms=H`, `final_stable_ms=0`.
+These are intentionally different statements, not inconsistent rounding.

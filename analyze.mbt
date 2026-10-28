@@ -63,6 +63,10 @@ pub fn analyze_trial(
     event_ms,
     outcome: Censored,
     recovery_ms: None,
+    held_ms: None,
+    lost_ms: None,
+    first_loss_ms: None,
+    final_stable_ms: None,
     reason: "",
   }
   if samples[event_index].time_ms - samples[event_index - 1].time_ms >
@@ -82,6 +86,8 @@ pub fn analyze_trial(
       return Ok({ ..base, reason: "sample_gap", })
     }
   }
+  let mut held_ms = 0
+  let mut first_loss_ms : Int32? = None
   let mut any_loss = false
   let mut was_held = false
   let mut stable_start = event_ms
@@ -90,26 +96,45 @@ pub fn analyze_trial(
     if sample.time_ms > deadline {
       break
     }
+    if sample.time_ms < deadline && sample.held {
+      let next_time = samples[i + 1].time_ms
+      let interval_end = if next_time < deadline { next_time } else { deadline }
+      held_ms = held_ms + interval_end - sample.time_ms
+    }
     if sample.held {
       if !was_held {
         stable_start = sample.time_ms
       }
     } else {
+      if !any_loss {
+        first_loss_ms = Some(sample.time_ms - event_ms)
+      }
       any_loss = true
     }
     was_held = sample.held
   }
+  let diagnosed : TrialResult = {
+    ..base,
+    held_ms: Some(held_ms),
+    lost_ms: Some(options.horizon_ms - held_ms),
+    first_loss_ms,
+    final_stable_ms: Some(if was_held { deadline - stable_start } else { 0 }),
+  }
   if !any_loss {
-    Ok({ ..base, outcome: Retained, reason: "held_through_horizon", })
+    Ok({ ..diagnosed, outcome: Retained, reason: "held_through_horizon", })
   } else if was_held && deadline - stable_start >= options.dwell_ms {
     Ok({
-      ..base,
+      ..diagnosed,
       outcome: Recovered,
       recovery_ms: Some(stable_start - event_ms),
       reason: "final_run_meets_dwell",
     })
   } else {
-    Ok({ ..base, outcome: Unrecovered, reason: "no_sustained_final_recovery", })
+    Ok({
+      ..diagnosed,
+      outcome: Unrecovered,
+      reason: "no_sustained_final_recovery",
+    })
   }
 }
 

@@ -12,14 +12,14 @@ Executed locally in the development cloud environment on **2026-10-28**:
 |---|---|
 | `moon fmt --check` | Pass |
 | `moon check --target js --deny-warn` | Pass, no warnings |
-| `moon test --target js` | 19/19 |
-| `moon test --target wasm-gc` | 19/19 |
+| `moon test --target js` | 24/24 |
+| `moon test --target wasm-gc` | 24/24 |
 | `moon build --target js --release` | Pass |
 | `python3 scripts/integration_test.py` | 10/10 |
 | Randomized reference comparison | 500/500 seeded traces agree |
 | Example Markdown + JSON report generation | Ran; golden outputs match |
 
-The 19 tests are the same cases exercised on two compiler backends, not 38 unique
+The 24 tests are the same cases exercised on two compiler backends, not 48 unique
 tests. The 500 generated traces are software test cases, not robot experiments.
 The Python oracle exists only for verification; the production algorithm is MoonBit.
 
@@ -36,3 +36,5 @@ No real robot, physics simulator, force-closure model, Windows/macOS execution, 
 remote GitHub Actions run was tested. The generated CLI was run on Linux/Node.
 CI installs the official current stable toolchain, so future language changes may
 require updates; the concrete tested version is recorded above.
+
+Diagnostic regression checks additionally cover duration conservation, zero-duration endpoint loss, censored nulls, and clipped intervals. The 500-trace oracle now checks all four diagnostic fields as well as outcomes.

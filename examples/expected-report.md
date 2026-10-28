@@ -11,15 +11,15 @@ Stable rate = (retained + recovered) / complete trials. Recovery given loss excl
 
 ## Trial audit trail
 
-| Trial | Policy | Outcome | Recovery (ms) | Reason |
-|---|---|---|---:|---|
-| b_keep | baseline | retained | N/A | held_through_horizon |
-| b_fail | baseline | unrecovered | N/A | no_sustained_final_recovery |
-| b_recover | baseline | recovered | 600 | final_run_meets_dwell |
-| b_short | baseline | censored | N/A | incomplete_horizon |
-| f_keep | feedback | retained | N/A | held_through_horizon |
-| f_recover | feedback | recovered | 300 | final_run_meets_dwell |
-| f_late | feedback | recovered | 800 | final_run_meets_dwell |
-| f_gap | feedback | censored | N/A | sample_gap |
+| Trial | Policy | Outcome | Recovery (ms) | Lost (ms) | Final held (ms) | Reason |
+|---|---|---|---:|---:|---:|---|
+| b_keep | baseline | retained | N/A | 0 | 1000 | held_through_horizon |
+| b_fail | baseline | unrecovered | N/A | 1000 | 0 | no_sustained_final_recovery |
+| b_recover | baseline | recovered | 600 | 600 | 400 | final_run_meets_dwell |
+| b_short | baseline | censored | N/A | N/A | N/A | incomplete_horizon |
+| f_keep | feedback | retained | N/A | 0 | 1000 | held_through_horizon |
+| f_recover | feedback | recovered | 300 | 300 | 700 | final_run_meets_dwell |
+| f_late | feedback | recovered | 800 | 800 | 200 | final_run_meets_dwell |
+| f_gap | feedback | censored | N/A | N/A | N/A | sample_gap |
 
 **Interpretation:** observed binary-state retention and sustained final-window recovery under sample-and-hold, not continuous physical guarantees, force closure, causal effects, or robot task success. Recovery latency starts at the perturbation, not at the loss. Compare matched protocols, thresholds, objects, and sampling rates.

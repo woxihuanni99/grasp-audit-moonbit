@@ -103,12 +103,14 @@ class CLIIntegration(unittest.TestCase):
         rng = random.Random(20261028)
         rows = [HEADER.rstrip()]
         expected = {}
+        sample_sets = {}
         for n in range(500):
             samples = [(0, 1, 0), (rng.choice([100, 100, 300]), rng.randrange(2), 1)]
             for _ in range(rng.randrange(2, 17)):
                 samples.append((samples[-1][0] + rng.choice([50, 100, 199, 200, 250, 251, 300]), rng.randrange(2), 0))
             trial = f'random_{n}'
             expected[trial] = oracle(samples)
+            sample_sets[trial] = samples
             rows += [f'{trial},p,{time},{held},{marker}' for time, held, marker in samples]
         result = cli('-', '--format', 'json', stdin=('\n'.join(rows) + '\n').encode())
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -116,6 +118,24 @@ class CLIIntegration(unittest.TestCase):
         self.assertEqual(len(actual), len(expected))
         for trial in actual:
             self.assertEqual((trial['outcome'], trial['recovery_ms'], trial['reason']), expected[trial['trial']], trial)
+            diagnostic_keys = ['held_ms', 'lost_ms', 'first_loss_ms', 'final_stable_ms']
+            if trial['outcome'] == 'censored':
+                self.assertTrue(all(trial[key] is None for key in diagnostic_keys), trial)
+                continue
+            samples = sample_sets[trial['trial']]
+            event = samples[1][0]
+            end = event + 1000
+            window = [(time, held) for time, held, _ in samples if event <= time <= end]
+            lost = sum(min(b[0], end) - a[0] for a, b in zip(samples[1:], samples[2:])
+                       if a[0] < end and not a[1])
+            first_loss = next((time - event for time, held in window if not held), None)
+            last_false = max((i for i, (_, held) in enumerate(window) if not held), default=-1)
+            final_start = window[last_false + 1][0] if window[-1][1] else end
+            self.assertEqual(trial['lost_ms'], lost)
+            self.assertEqual(trial['held_ms'], 1000 - lost)
+            self.assertEqual(trial['first_loss_ms'], first_loss)
+            self.assertEqual(trial['final_stable_ms'], end - final_start)
+
 
 
 if __name__ == '__main__':
