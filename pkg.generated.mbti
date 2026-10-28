@@ -1,0 +1,87 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "grasp-audit/grasp-audit"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn analyze_csv(String, Options) -> Result[Report, String]
+
+pub fn analyze_trial(Trial, Options) -> Result[TrialResult, String]
+
+pub fn default_options() -> Options
+
+pub fn outcome_name(Outcome) -> String
+
+pub fn parse_csv(String) -> Result[Array[Trial], String]
+
+pub fn parse_nonnegative(String) -> Result[Int32, String]
+
+pub fn render_csv(Report) -> String
+
+pub fn render_json(Report) -> String
+
+pub fn render_markdown(Report) -> String
+
+pub fn summarize(Array[TrialResult]) -> Array[PolicySummary]
+
+// Errors
+
+// Types and methods
+pub(all) struct Options {
+  horizon_ms : Int32
+  dwell_ms : Int32
+  max_gap_ms : Int32
+}
+
+pub(all) enum Outcome {
+  Retained
+  Recovered
+  Unrecovered
+  Censored
+} derive(Eq, @debug.Debug)
+pub fn Outcome::equal(Self, Self) -> Bool
+pub fn Outcome::not_equal(Self, Self) -> Bool
+pub fn Outcome::to_repr(Self) -> @debug.Repr
+
+pub(all) struct PolicySummary {
+  policy : String
+  total : Int32
+  retained : Int32
+  recovered : Int32
+  unrecovered : Int32
+  censored : Int32
+  median_recovery_ms : Double?
+}
+
+pub(all) struct Report {
+  options : Options
+  trials : Array[TrialResult]
+  policies : Array[PolicySummary]
+}
+
+pub(all) struct Sample {
+  time_ms : Int32
+  held : Bool
+  perturbation : Bool
+}
+
+pub(all) struct Trial {
+  id : String
+  policy : String
+  samples : Array[Sample]
+}
+
+pub(all) struct TrialResult {
+  trial : String
+  policy : String
+  event_ms : Int32
+  outcome : Outcome
+  recovery_ms : Int32?
+  reason : String
+}
+
+// Type aliases
+
+// Traits
