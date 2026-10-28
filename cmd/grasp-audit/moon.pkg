@@ -1,0 +1,11 @@
+import {
+  "grasp-audit/grasp-audit" @audit,
+}
+
+pkgtype(kind: "executable")
+
+supported_targets = "js"
+
+options(
+  link: { "js": { "format": "cjs" } },
+)
